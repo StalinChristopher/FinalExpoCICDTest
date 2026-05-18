@@ -11,6 +11,7 @@ import { useThemedStyles } from '../theme/useThemedStyles';
 import { usePermission } from '../permissions';
 import type { PermissionKey, PermissionStatus } from '../permissions/types';
 import { CONFIGURED_PERMISSIONS } from '../permissions/configuredPermissions';
+import { AppColors } from '../theme/AppColors';
 
 interface PermissionRowProps {
   label: string;
@@ -19,7 +20,7 @@ interface PermissionRowProps {
 
 function statusColor(
   status: PermissionStatus | null,
-  colors: { success: string; error: string; warning: string; text2: string },
+  colors: AppColors,
 ): string {
   switch (status) {
     case 'granted':
@@ -27,7 +28,7 @@ function statusColor(
     case 'blocked':
       return colors.error;
     case 'denied':
-      return colors.warning;
+      return colors.secondary;
     default:
       return colors.text2;
   }
@@ -45,13 +46,13 @@ function PermissionRow({ label, permissionKey }: PermissionRowProps) {
       paddingVertical: 14,
       paddingHorizontal: 16,
       borderRadius: 12,
-      backgroundColor: colors.surface,
+      backgroundColor: colors.inputBoxColor,
       marginBottom: 10,
     },
     label: {
       fontSize: 15,
       fontWeight: '500' as const,
-      color: colors.text1,
+      color: colors.primary,
       flex: 1,
     },
     statusText: {
@@ -67,7 +68,7 @@ function PermissionRow({ label, permissionKey }: PermissionRowProps) {
       backgroundColor: colors.primary,
     },
     buttonText: {
-      color: colors.onPrimary,
+      color: colors.textOnPrimary,
       fontSize: 13,
       fontWeight: '600' as const,
     },
@@ -140,7 +141,7 @@ export function PermissionsDemoScreen() {
     placeholder: {
       padding: 16,
       borderRadius: 12,
-      backgroundColor: colors.surface,
+      backgroundColor: colors.inputBoxColor,
     },
     placeholderText: {
       fontSize: 14,

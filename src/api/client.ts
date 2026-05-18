@@ -19,9 +19,7 @@ function requestUrl(config: InternalAxiosRequestConfig): string {
 apiClient.interceptors.request.use(
   async (config: InternalAxiosRequestConfig) => {
     logger.debug(
-      `[API] → ${config.method?.toUpperCase() ?? "GET"} ${requestUrl(
-        config,
-      )}`,
+      `[API] → ${config.method?.toUpperCase() ?? "GET"} ${requestUrl(config)}`,
     );
 
     // TODO: retrieve and attach your auth token here, for example:

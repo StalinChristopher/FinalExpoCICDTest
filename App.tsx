@@ -9,21 +9,21 @@ import { ThemedNavigationContainer } from "./src/navigation/ThemedNavigationCont
 import { QueryProvider } from "./src/query/QueryProvider";
 import { AppThemeProvider } from "./src/theme/ThemeContext";
 import { ConnectivityProvider } from "./src/connectivity/ConnectivityHelper";
-import { FeedbackProvider } from './src/feedback';
+import { FeedbackProvider } from "./src/feedback";
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
         <SafeAreaProvider>
-                <FeedbackProvider>
-          <QueryProvider>
-            <AppThemeProvider>
-              <ConnectivityProvider>
-                <ThemedNavigationContainer />
-              </ConnectivityProvider>
-            </AppThemeProvider>
-          </QueryProvider>
+          <FeedbackProvider>
+            <QueryProvider>
+              <AppThemeProvider>
+                <ConnectivityProvider>
+                  <ThemedNavigationContainer />
+                </ConnectivityProvider>
+              </AppThemeProvider>
+            </QueryProvider>
           </FeedbackProvider>
         </SafeAreaProvider>
       </BottomSheetModalProvider>

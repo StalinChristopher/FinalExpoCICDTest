@@ -34,7 +34,7 @@ interface Props {
 const ConnectivityOfflineView = React.memo(function ConnectivityOfflineView() {
   const { theme } = useAppTheme();
   const styles = useThemedStyles(
-    (c) => ({
+    c => ({
       errorContainer: {
         flex: 1,
         backgroundColor: c.background,
@@ -102,11 +102,18 @@ export const ConnectivityProvider: React.FC<Props> = ({ children }) => {
 
   // 3. Render logic: If connection is explicitly false, show error
   // We check isConnected (physical link) and isInternetReachable (actual ping)
-  if (netState.isConnected === false || netState.isInternetReachable === false) {
+  if (
+    netState.isConnected === false ||
+    netState.isInternetReachable === false
+  ) {
     return <ConnectivityOfflineView />;
   }
 
-  return <ConnectivityContext.Provider value={netState}>{children}</ConnectivityContext.Provider>;
+  return (
+    <ConnectivityContext.Provider value={netState}>
+      {children}
+    </ConnectivityContext.Provider>
+  );
 };
 
 // Custom hook to use connectivity status in any component
