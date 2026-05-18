@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "plugins": [
+      "./plugins/withAndroidPip",
+      "react-native-video",
+      [
+        "react-native-permissions",
+        {
+          "iosPermissions": [
+            "Camera"
+          ]
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraMavenRepos": [
+              "../../node_modules/@notifee/react-native/android/libs"
+            ]
+          }
+        }
+      ]
+    ],
+    "ios": {
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio",
+          "picture-in-picture"
+        ],
+        "NSCameraUsageDescription": "This app needs access to the camera."
+      }
+    },
+    "android": {
+      "permissions": [
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.SCHEDULE_EXACT_ALARM",
+        "android.permission.VIBRATE",
+        "android.permission.WAKE_LOCK",
+        "CAMERA"
+      ]
+    }
+  }
+}
